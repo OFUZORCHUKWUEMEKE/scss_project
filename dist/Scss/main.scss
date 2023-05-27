@@ -1,17 +1,47 @@
 // variables scss
+@import './resets';
+@import './variables';
 
-$primary_color:#000;
-$text_color:#fff;
 
-// maps
-$font_weights:(
-    "regular":400,
-    "medium":500,
-    "bold":700
-);
+@function weight($weight-name){
+    @return map-get($font_weights, $weight-name )
+}
 
 body{
     background-color: $primary_color;
-    color:$text_color;
-    font-weight: map-get($font_weights, regular);
+    // color:$text_color;
+  
+}
+
+@mixin FlexCenter($direction){
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: $direction;
+}
+
+@mixin theme($light-theme:true){
+    @if $light-theme{
+        background: lighten($primary_color, 100%);
+        color: darken($primary_color, 100%);
+    }
+}
+
+.main{
+    width: 80%; 
+    margin: 0 auto;
+    @include FlexCenter(row);
+    height: 100vh;
+
+    h2{
+        font-weight: weight(bold);
+        color: $text_color;
+        &:hover{
+            color: pink;
+        }
+    }
+}
+
+.light{
+    @include theme($light-theme:false)
 }
