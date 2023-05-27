@@ -1,3 +1,17 @@
+// variables scss
+
+$primary_color:#000;
+$text_color:#fff;
+
+// maps
+$font_weights:(
+    "regular":400,
+    "medium":500,
+    "bold":700
+);
+
 body{
-    background-color: blue;
+    background-color: $primary_color;
+    color:$text_color;
+    font-weight: map-get($font_weights, regular);
 }
